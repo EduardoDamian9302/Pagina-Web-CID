@@ -4,6 +4,7 @@ import HeadSuperior from "./Head_superior.tsx";
 const Head: React.FC = () => {
   return (
     <div
+      id="header"
       style={{
         width: "100%",
         position: "fixed",
