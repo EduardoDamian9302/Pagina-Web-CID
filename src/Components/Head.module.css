@@ -17,9 +17,20 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
 .logo {
   margin-left: 0;
   margin-right: 12px;
   display: block;
+}
+.button {
+  border: none;
+  background: "transparent";
+  box-shadow: none;
+  padding: 6px 10px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
 }

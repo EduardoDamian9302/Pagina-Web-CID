@@ -9,7 +9,12 @@ interface OffCanvasProps {
 
 const OffCanvas: React.FC<OffCanvasProps> = ({ show, handleClose }) => {
   return (
-    <Offcanvas show={show} onHide={handleClose} className={styles.offcanvas}>
+    <Offcanvas
+      show={show}
+      onHide={handleClose}
+      className={styles.offcanvas}
+      placement="end"
+    >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Menu</Offcanvas.Title>
       </Offcanvas.Header>
