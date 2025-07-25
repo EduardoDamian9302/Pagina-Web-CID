@@ -1,6 +1,6 @@
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import styles from "./OffCanvas.module.css";
+import styles from "./Css/OffCanvas.module.css";
 
 interface OffCanvasProps {
   show: boolean;

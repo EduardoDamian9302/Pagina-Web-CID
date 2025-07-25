@@ -1,6 +1,6 @@
 import React from "react";
 import { NavDropdown } from "react-bootstrap";
-import styles from "./Head.module.css";
+import styles from "./Css/Head.module.css";
 
 const HeadSuperior: React.FC = () => {
   return (
