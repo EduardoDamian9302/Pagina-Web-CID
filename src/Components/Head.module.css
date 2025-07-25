@@ -1,5 +1,5 @@
 .navbar {
-  background-color: brown;
+  background-color: #691c32;
   padding: 0px;
 }
 .navbar-brand {
@@ -14,12 +14,23 @@
   color: #ffffff;
 }
 .navDropdown {
+  background-color: #10312b;
   margin-left: auto;
   display: flex;
   gap: 16px;
   align-items: center;
-  justify-content: flex-end;
   padding-right: 20px;
+}
+.superiorHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.text_dropdown {
+  color: #ffffff;
+  font: proto-sans, sans-serif;
 }
 .logo {
   margin-left: 0;
