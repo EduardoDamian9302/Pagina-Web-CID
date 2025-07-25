@@ -14,26 +14,37 @@ const HeadInferior: React.FC = () => {
   return (
     <div>
       <Navbar expand="lg" className={styles.navbar}>
-        <Container className={styles.navbarContainer}>
-          <Navbar.Brand href="#home" className={styles.navbarBrand}>
-            React-CID
-          </Navbar.Brand>
-          <Button
-            variant="outline-light"
-            onClick={handleOpen}
-            style={{
-              border: "none",
-              background: "transparent",
-              boxShadow: "none",
-              padding: "6px 10px",
-              fontSize: "1.5rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          >
-            <FontAwesomeIcon icon={faBars} />
-          </Button>
+        <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
+            <Navbar.Brand
+              href="#home"
+              style={{
+                marginLeft: 0,
+                paddingLeft: 16,
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: "1.5rem",
+              }}
+            >
+              React-CID
+            </Navbar.Brand>
+            <div style={{ marginLeft: "auto" }}>
+              <Button
+                variant="outline-light"
+                onClick={handleOpen}
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  boxShadow: "none",
+                  padding: "6px 10px",
+                  fontSize: "1.5rem",
+                  display: "flex",
+                }}
+              >
+                <FontAwesomeIcon icon={faBars} />
+              </Button>
+            </div>
+          </div>
           <OffCanvas show={showOffCanvas} handleClose={handleClose} />
         </Container>
       </Navbar>
