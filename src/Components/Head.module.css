@@ -1,0 +1,25 @@
+.navbar {
+  background-color: brown;
+}
+.navbar-brand {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+.navbarContainer {
+  background-color: brown;
+}
+.offcanvas {
+  background-color: #343a40;
+  color: #ffffff;
+}
+.navDropdown {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.logo {
+  margin-left: 0;
+  margin-right: 12px;
+  display: block;
+}
