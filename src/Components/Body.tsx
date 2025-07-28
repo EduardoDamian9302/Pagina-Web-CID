@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const getHeaderHeight = () => {
-  const header = document.querySelector("header, .header, #header");
+  const header = document.querySelector("#header");
   return header ? (header as HTMLElement).offsetHeight : 0;
 };
 
@@ -15,7 +15,8 @@ const Body: React.FC = () => {
       const footerHeight = footer ? (footer as HTMLElement).offsetHeight : 0;
       setMinHeight(`calc(100vh - ${headerHeight + footerHeight}px)`);
     };
-    updateMinHeight();
+    // Espera a que el DOM esté listo
+    setTimeout(updateMinHeight, 0);
     window.addEventListener("resize", updateMinHeight);
     return () => window.removeEventListener("resize", updateMinHeight);
   }, []);
@@ -23,8 +24,10 @@ const Body: React.FC = () => {
   return (
     <div
       style={{
-        width: "100%",
-        minHeight: minHeight,
+        width: "100vw",
+        paddingTop: "90px",
+        minHeight: "2160px", //minHeight,
+        maxHeight: "100vh",
         overflow: "auto",
         background: `
           url("/assets/fondo_instalaciones.jpg") center/cover no-repeat,
@@ -32,6 +35,7 @@ const Body: React.FC = () => {
         `,
         backgroundBlendMode: "normal",
         color: "#333",
+        bottom: "0",
       }}
     >
       <h1>Welcome to React-CID</h1>
@@ -70,4 +74,5 @@ const Body: React.FC = () => {
     </div>
   );
 };
+
 export default Body;

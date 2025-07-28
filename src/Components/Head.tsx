@@ -12,7 +12,7 @@ const Head: React.FC = () => {
         left: 0,
       }}
     >
-      <div>
+      <div id="header">
         <HeadSuperior />
         <HeadInferior />
       </div>
