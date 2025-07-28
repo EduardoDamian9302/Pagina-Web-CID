@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import styles from "./Css/Head.module.css";
 
 const HeadSuperior: React.FC = () => {
+  const [showTramites, setShowTramites] = useState(false);
+  const [showInformacion, setShowInformacion] = useState(false);
+
   return (
     <div
       style={{
@@ -30,24 +33,42 @@ const HeadSuperior: React.FC = () => {
           paddingRight: 20,
         }}
       >
-        <NavDropdown
-          title="Tramites"
-          id="tramites-dropdown"
-          className={styles.text_dropdown}
+        <div
+          onMouseEnter={() => setShowTramites(true)}
+          onMouseLeave={() => setShowTramites(false)}
         >
-          <NavDropdown.Item href="#action/3.1">Tramite 1</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Tramite 2</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Tramite 3</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown
-          title="Informacion"
-          id="informacion-dropdown"
-          className={styles.text_dropdown}
+          <NavDropdown
+            title="Tramites"
+            id="tramites-dropdown"
+            className={styles.text_dropdown}
+            show={showTramites}
+          >
+            <NavDropdown.Item href="#action/3.1">Tramite 1</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Tramite 2</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Tramite 3</NavDropdown.Item>
+          </NavDropdown>
+        </div>
+        <div
+          onMouseEnter={() => setShowInformacion(true)}
+          onMouseLeave={() => setShowInformacion(false)}
         >
-          <NavDropdown.Item href="#action/3.1">Informacion 1</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Informacion 2</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Informacion 3</NavDropdown.Item>
-        </NavDropdown>
+          <NavDropdown
+            title="Informacion"
+            id="informacion-dropdown"
+            className={styles.text_dropdown}
+            show={showInformacion}
+          >
+            <NavDropdown.Item href="#action/3.1">
+              Informacion 1
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">
+              Informacion 2
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">
+              Informacion 3
+            </NavDropdown.Item>
+          </NavDropdown>
+        </div>
       </div>
     </div>
   );

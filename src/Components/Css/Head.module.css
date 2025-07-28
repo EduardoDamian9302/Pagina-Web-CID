@@ -35,6 +35,7 @@
 .text_dropdown {
   color: #ffffff;
   font: proto-sans, sans-serif;
+  z-index: 1050;
 }
 .logo {
   margin-left: 0;
