@@ -24,15 +24,14 @@ const Body: React.FC = () => {
     <div
       style={{
         width: "100%",
-        paddingTop: "30px",
         minHeight: minHeight,
         overflow: "auto",
         background: `
-          url("public/assets/fondo_instalaciones.jpg") center/cover no-repeat,
+          url("/assets/fondo_instalaciones.jpg") center/cover no-repeat,
           linear-gradient(to bottom, rgba(255,255,255,0) 70%, #e0e0e0 100%)
         `,
         backgroundBlendMode: "normal",
-        color: "#fff",
+        color: "#333",
       }}
     >
       <h1>Welcome to React-CID</h1>

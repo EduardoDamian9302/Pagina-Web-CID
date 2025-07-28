@@ -1,10 +1,11 @@
 .navbar {
   background-color: #691c32;
   padding: 0px;
+  height: 40px;
 }
 .navbar-brand {
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: auto;
 }
 .navbarContainer {
   background-color: brown;
