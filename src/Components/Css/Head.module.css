@@ -2,6 +2,9 @@
   background-color: #691c32;
   padding: 0px;
   height: 40px;
+  transition: top 0.3s;
+  position: sticky;
+  z-index: 1040;
 }
 .navbar-brand {
   color: #ffffff;

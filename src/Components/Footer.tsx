@@ -9,9 +9,10 @@ const Footer: React.FC = () => {
         color: "#fff",
         textAlign: "center",
         left: 0,
-        position: "fixed",
+        position: "static",
         bottom: 0,
         padding: "10px 0",
+        marginTop: "auto",
       }}
     >
       <p style={{ margin: 0 }}>

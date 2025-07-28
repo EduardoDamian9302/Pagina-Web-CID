@@ -4,16 +4,46 @@ import styles from "./Css/Head.module.css";
 import OffCanvas from "./OffCanvas.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HeadInferior: React.FC = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false);
+
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const handleOpen = () => setShowOffCanvas(true);
   const handleClose = () => setShowOffCanvas(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY && window.scrollY > 30) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <Navbar expand="lg" className={styles.navbar}>
-      <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+    <Navbar
+      expand="lg"
+      className={styles.navbar}
+      style={{ top: visible ? "0" : "-80px" }}
+    >
+      <Container
+        fluid
+        style={{
+          paddingLeft: 0,
+          paddingRight: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
           <Navbar.Brand
             href="#home"
@@ -27,7 +57,7 @@ const HeadInferior: React.FC = () => {
           >
             React-CID
           </Navbar.Brand>
-          <div style={{ marginLeft: "auto" }}>
+          <div style={{ position: "absolute", right: 16 }}>
             <Button
               variant="outline-light"
               onClick={handleOpen}
