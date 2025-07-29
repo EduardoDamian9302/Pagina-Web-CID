@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CardButton from "./CardButton.tsx";
 
 const getHeaderHeight = () => {
   const header = document.querySelector("#header");
@@ -6,9 +7,9 @@ const getHeaderHeight = () => {
 };
 
 const Body: React.FC = () => {
-  const [minHeight, setMinHeight] = useState("100vh");
+  //const [minHeight, setMinHeight] = useState("100vh");
 
-  useEffect(() => {
+  /*useEffect(() => {
     const updateMinHeight = () => {
       const headerHeight = getHeaderHeight();
       const footer = document.querySelector("footer");
@@ -19,7 +20,7 @@ const Body: React.FC = () => {
     setTimeout(updateMinHeight, 0);
     window.addEventListener("resize", updateMinHeight);
     return () => window.removeEventListener("resize", updateMinHeight);
-  }, []);
+  }, []);*/
 
   return (
     <div
@@ -71,6 +72,10 @@ const Body: React.FC = () => {
         suscipit totam? Laboriosam, voluptatem quo. Fugiat voluptas hic et modi
         rerum explicabo, reprehenderit architecto sint sequi fuga!Lorem
       </p>
+      <CardButton
+        title="Card Button Example"
+        handleClick={() => alert("Card Button Clicked!")}
+      ></CardButton>
     </div>
   );
 };
