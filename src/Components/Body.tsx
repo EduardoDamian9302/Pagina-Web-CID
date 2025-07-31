@@ -1,4 +1,3 @@
-import React from "react";
 import CardButtonAnimate from "./CardButtonAnimate.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
