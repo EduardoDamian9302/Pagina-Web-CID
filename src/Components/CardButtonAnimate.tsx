@@ -6,6 +6,7 @@ import BodyContent, { type ContentSection } from "./BodyContent";
 import { faUser, faFile, faChartPie } from "@fortawesome/free-solid-svg-icons";
 import UsersComponent from "./UsersComponent";
 import SalesChart from "./Grafica";
+import EchartComponent from "./EchartComponent";
 
 interface CardData {
   id: string;
@@ -19,6 +20,50 @@ interface CardData {
   };
   content: ContentSection[];
 }
+
+const option: echarts.EChartsOption = {
+  tooltip: {
+    trigger: "item",
+  },
+  legend: {
+    top: "5%",
+    left: "center",
+  },
+  series: [
+    {
+      name: "Grafica de ejemplo",
+      type: "pie",
+      radius: ["40%", "70%"],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: "#fff",
+        borderWidth: 2,
+      },
+      label: {
+        show: false,
+        position: "center",
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 40,
+          fontWeight: "bold",
+        },
+      },
+      labelLine: {
+        show: false,
+      },
+      data: [
+        { value: 1048, name: "Search Engine" },
+        { value: 735, name: "Direct" },
+        { value: 580, name: "Email" },
+        { value: 484, name: "Union Ads" },
+        { value: 300, name: "Video Ads" },
+      ],
+    },
+  ],
+};
 
 const CardDetails: CardData[] = [
   {
@@ -53,7 +98,7 @@ const CardDetails: CardData[] = [
       {
         sectionId: "second-graph",
         title: "Segunda grafica",
-        component: <div>Aqui esta otro elemento</div>,
+        component: <EchartComponent option={option} />,
       },
     ],
   },
@@ -70,7 +115,32 @@ const CardDetails: CardData[] = [
       {
         sectionId: "reports-graph",
         title: "Grafica",
-        component: <div>Tercer elemento</div>,
+        description: "Grafica de ejemplo",
+        component: (
+          <EchartComponent option={option} style={{ height: "400px" }} />
+        ),
+      },
+      {
+        sectionId: "reports-graph2",
+        title: "Grafica2",
+        description: "lorem ipsum dolor sit amet",
+        component: (
+          <EchartComponent option={option} style={{ height: "400px" }} />
+        ),
+      },
+      {
+        sectionId: "reports-graph3",
+        title: "Grafica3",
+        component: (
+          <EchartComponent option={option} style={{ height: "400px" }} />
+        ),
+      },
+      {
+        sectionId: "reports-graph4",
+        title: "Grafica4",
+        component: (
+          <EchartComponent option={option} style={{ height: "400px" }} />
+        ),
       },
     ],
   },
@@ -92,9 +162,19 @@ const CardButtonAnimate: React.FC = () => {
   );
 
   return (
-    <Container className="py-3">
-      <h1 className="text-center mb-4">Panel principal</h1>
+    <Container
+      fluid
+      className="pt-3 justify-content-center"
+      style={{
+        minHeight: "100vh",
+        height: "100vh",
+        flexDirection: "column",
+        paddingTop: "10px",
+        paddingBottom: "0px",
+      }}
+    >
       <div style={{ position: "relative", minHeight: "600px" }}>
+        <h1 className="text-center mb-4">Panel principal</h1>
         <motion.div
           animate={{ opacity: selectedCardId ? 0 : 1 }}
           transition={{ duration: 0.2 }}
@@ -102,11 +182,21 @@ const CardButtonAnimate: React.FC = () => {
             pointerEvents: selectedCardId ? "none" : "auto",
             position: selectedCardId ? "absolute" : "relative",
             width: "100%",
+            height: "100%",
           }}
         >
-          <Row className="g-4">
+          <Row
+            className="g-4 justify-content-center"
+            style={{ height: "100%" }}
+          >
             {CardDetails.map((card) => (
-              <Col key={card.id} md={6} lg={4}>
+              <Col
+                key={card.id}
+                md={6}
+                lg={4}
+                className="d-flex justify-content-center align-items-center"
+                style={{ minHeight: "200px" }}
+              >
                 <motion.div layoutId={card.id}>
                   <CardButton
                     {...card}
@@ -125,7 +215,8 @@ const CardButtonAnimate: React.FC = () => {
                 top: 0,
                 left: 0,
                 bottom: 0,
-                zIndex: 40,
+                zIndex: 9,
+                height: "100%",
               }}
             >
               <motion.div
@@ -138,9 +229,9 @@ const CardButtonAnimate: React.FC = () => {
                   position: "absolute",
                   width: "100%",
                   height: "100%",
-                  background: "#f8f9fa",
+                  //background: "#f8f9fa",
                   borderRadius: "0.5rem",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                  //boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
                 }}
               >
                 <BodyContent content={selectedCardData.content} />
@@ -149,10 +240,10 @@ const CardButtonAnimate: React.FC = () => {
                 layoutId={selectedCardData.id}
                 style={{
                   position: "absolute",
-                  top: "20px",
+                  //top: "10px",
                   left: "20px",
                   width: "250px",
-                  zIndex: 50,
+                  zIndex: 9,
                 }}
               >
                 <CardButton
