@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
@@ -11,7 +12,6 @@ interface CardButtonProps {
   colors?: {
     headerBg?: string;
     headerText?: string;
-
     bodyBg?: string;
     icon?: string;
   };
@@ -38,6 +38,8 @@ const CardButton: React.FC<CardButtonProps> = ({
     zIndex: "1",
     borderRadius: "50px",
     backgroundColor: colors.bodyBg || "#ffffff",
+    width: "100%",
+    maxWidth: "1200px",
   };
   const headerStyles: React.CSSProperties = {
     backgroundColor: colors.headerBg || colors.bodyBg,
@@ -52,17 +54,23 @@ const CardButton: React.FC<CardButtonProps> = ({
   };
 
   return (
-    <Card style={cardStyles} onClick={onClick}>
-      <Card.Header style={headerStyles} className="text-center fw-bold">
-        {title}
-      </Card.Header>
-      <Card.Body
-        style={bodyStyles}
-        className="d-flex justify-content-center align-items-center"
-      >
-        <FontAwesomeIcon icon={icon} style={iconColorStyle} size={iconSize} />
-      </Card.Body>
-    </Card>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      <Card style={cardStyles} onClick={onClick} className="shadow-md">
+        <Card.Header style={headerStyles} className="text-center fw-bold">
+          {title}
+        </Card.Header>
+        <Card.Body
+          style={bodyStyles}
+          className="d-flex justify-content-center align-items-center"
+        >
+          <FontAwesomeIcon icon={icon} style={iconColorStyle} size={iconSize} />
+        </Card.Body>
+      </Card>
+    </motion.div>
   );
 };
 

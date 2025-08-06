@@ -1,9 +1,10 @@
-import React from "react";
-import { Nav } from "react-bootstrap";
+import React, { useEffect, useRef } from "react";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 
 export interface ContentSection {
   sectionId: string;
   title: string;
+  description?: string;
   component: React.ReactNode;
 }
 
@@ -12,34 +13,62 @@ interface BodyContentProps {
 }
 
 const BodyContent: React.FC<BodyContentProps> = ({ content }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // @ts-ignore
+    import("bootstrap/js/dist/scrollspy").then(({ default: ScrollSpy }) => {
+      if (scrollRef.current) {
+        // eslint-disable-next-line no-new
+        new ScrollSpy(scrollRef.current, {
+          target: "#main-navbar",
+          offset: 5,
+        });
+      }
+    });
+  }, []);
+
   return (
     <div
+      ref={scrollRef}
+      data-bs-spy="scroll"
+      data-bs-target="#main-navbar"
+      data-bs-smooth-scroll="true"
+      tabIndex={0}
       style={{
-        padding: "2rem",
         width: "100%",
-        height: "100%",
-        overflowY: "auto",
-        paddingTop: "80px",
+        height: "90vh",
+        overflowY: "scroll",
+        paddingLeft: "290px",
+        bottom: 0,
       }}
     >
-      <Nav
-        className="justify-content-center mb-4"
+      <Navbar
+        id="main-navbar"
+        className="justify-content-center  mb-4"
         style={{
           position: "sticky",
           top: 0,
           backgroundColor: "white",
           padding: "1rem",
-          zIndex: 25,
+          zIndex: 9,
           boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
           borderRadius: "0.25rem",
         }}
       >
-        {content.map((section) => (
-          <Nav.Item key={section.sectionId}>
-            <Nav.Link href={`#${section.sectionId}`}>{section.title}</Nav.Link>
-          </Nav.Item>
-        ))}
-      </Nav>
+        <Nav>
+          {content.map((section) => (
+            <Nav.Item
+              key={section.sectionId}
+              style={{ margin: "3 30px", borderColor: "red" }}
+            >
+              <Nav.Link href={`#${section.sectionId}`}>
+                {section.title}
+              </Nav.Link>
+            </Nav.Item>
+          ))}
+        </Nav>
+      </Navbar>
       <div>
         {content.map((section) => (
           <section
@@ -48,7 +77,18 @@ const BodyContent: React.FC<BodyContentProps> = ({ content }) => {
             className="my-5"
           >
             <h2 className="mb-4 border-bottom pb-2">{section.title}</h2>
-            {section.component}
+            <Container fluid>
+              {section.description ? (
+                <Row>
+                  <Col>
+                    <span>{section.description}</span>
+                  </Col>
+                  <Col>{section.component}</Col>
+                </Row>
+              ) : (
+                <>{section.component}</>
+              )}
+            </Container>
           </section>
         ))}
       </div>
