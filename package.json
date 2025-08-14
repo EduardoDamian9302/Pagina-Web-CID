@@ -20,10 +20,14 @@
     "echarts": "^6.0.0",
     "framer-motion": "^12.23.12",
     "motion": "^12.23.12",
+    "pptx2html": "^0.3.4",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
-    "recharts": "^3.1.0"
+    "react-pdf": "^10.0.1",
+    "react18-file-viewer": "^0.0.10",
+    "recharts": "^3.1.0",
+    "rollup-plugin-copy": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

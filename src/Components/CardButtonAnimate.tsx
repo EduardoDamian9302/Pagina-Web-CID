@@ -7,6 +7,7 @@ import { faUser, faFile, faChartPie } from "@fortawesome/free-solid-svg-icons";
 import UsersComponent from "./UsersComponent";
 import SalesChart from "./Grafica";
 import EchartComponent from "./EchartComponent";
+import FileViewer from "./FileViewer";
 
 interface CardData {
   id: string;
@@ -64,6 +65,12 @@ const option: echarts.EChartsOption = {
     },
   ],
 };
+const pdfUrl =
+  "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+const pptxUrl =
+  "https://file-examples.com/storage/fe1134defc6538ed39b8efa/2017/02/file_example_PPTX_250kB.pptx";
+const docxUrl =
+  "https://file-examples.com/storage/fe1134defc6538ed39b8efa/2017/02/file-example_DOCX_100kB.docx";
 
 const CardDetails: CardData[] = [
   {
@@ -80,7 +87,12 @@ const CardDetails: CardData[] = [
       {
         sectionId: "user-checks",
         title: "Permisos Usuarios",
-        component: <div>Aqui va un elemento</div>,
+        component: (
+          <div>
+            {" "}
+            <FileViewer fileUrl={pdfUrl} />
+          </div>
+        ),
       },
     ],
   },

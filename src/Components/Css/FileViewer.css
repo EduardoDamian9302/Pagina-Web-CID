@@ -1,0 +1,20 @@
+.office_content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.office_content th,
+.office_content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.office_content th {
+  background-color: #f2f2f2;
+}
+
+#pptx-container {
+  width: 100% !important;
+  height: auto !important;
+}
