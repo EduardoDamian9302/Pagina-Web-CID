@@ -8,7 +8,10 @@ import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "./Css/FileViewer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  `pdfjs-dist/build/pdf.worker.min.mjs`,
+  import.meta.url
+).toString();
 
 interface FileViewerProps {
   file?: File;
@@ -144,7 +147,7 @@ const FileViewer: React.FC<FileViewerProps> = ({ file, fileUrl }) => {
   if (error) {
     return (
       <div style={{ padding: "20px", color: "red" }}>
-        <strong>Error:</strong>
+        <p>Error:</p>
         {error}
       </div>
     );

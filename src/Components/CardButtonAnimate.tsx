@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import CardButton from "./CardButton";
 import BodyContent, { type ContentSection } from "./BodyContent";
@@ -66,11 +66,34 @@ const option: echarts.EChartsOption = {
   ],
 };
 const pdfUrl =
-  "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+  "https://srv1107-files.hstgr.io/6863ec88c8859c37/files/public_html/files/Inteligencia_Artificial_IMSS.pdf";
 const pptxUrl =
   "https://file-examples.com/storage/fe1134defc6538ed39b8efa/2017/02/file_example_PPTX_250kB.pptx";
 const docxUrl =
   "https://file-examples.com/storage/fe1134defc6538ed39b8efa/2017/02/file-example_DOCX_100kB.docx";
+
+function fileHook() {
+  const [fileSource, setFileSource] = useState<{
+    file?: File;
+    fileUrl?: string;
+  }>({});
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileSource({ file: file });
+    }
+  };
+  return (
+    <div>
+      <input
+        type="file"
+        accept=".pdf,.docx,.xlsx,.pptx"
+        onChange={handleFileChange}
+      />
+      <FileViewer file={fileSource.file} />
+    </div>
+  );
+}
 
 const CardDetails: CardData[] = [
   {
@@ -86,13 +109,8 @@ const CardDetails: CardData[] = [
       },
       {
         sectionId: "user-checks",
-        title: "Permisos Usuarios",
-        component: (
-          <div>
-            {" "}
-            <FileViewer fileUrl={pdfUrl} />
-          </div>
-        ),
+        title: "Lector Archivos",
+        component: fileHook(),
       },
     ],
   },
@@ -111,6 +129,11 @@ const CardDetails: CardData[] = [
         sectionId: "second-graph",
         title: "Segunda grafica",
         component: <EchartComponent option={option} />,
+      },
+      {
+        sectionId: "pdf-viewer",
+        title: "Url PDF",
+        component: <FileViewer fileUrl={pdfUrl} />,
       },
     ],
   },
